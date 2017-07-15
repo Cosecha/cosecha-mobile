@@ -1,22 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Home from './app/containers/home/Home';
+import { AppRegistry, Text, StyleSheet, View } from 'react-native';
+import Login from './app/containers/login/Login';
+import HomeScreen from './app/containers/home/HomeScreen';
+import { StackNavigator } from 'react-navigation';
 
-export default class Cosecha extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Home />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const App = StackNavigator({
+  Login: { screen: Login },
+  Home: { screen: HomeScreen },
 });
+
+AppRegistry.registerComponent('App', () => App);
+
+export default App;
