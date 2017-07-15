@@ -5,8 +5,10 @@ import HomeScreen from './app/containers/home/HomeScreen';
 import { StackNavigator } from 'react-navigation';
 
 const App = StackNavigator({
-  Login: { screen: Login },
   Home: { screen: HomeScreen },
+  Login: { screen: Login },
+}, {
+  initialRouteName: 'Home',
 });
 
 AppRegistry.registerComponent('App', () => App);

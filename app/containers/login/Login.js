@@ -8,13 +8,7 @@ import {
 
 class Login extends Component {
   static navigationOptions = {
-    title: 'Cosecha Mobile',
-  }
-
-  login() {
-    console.log('Loggin in...');
-    const { navigate } = this.props.navigation;
-    navigate('Home');
+    title: 'Login',
   }
 
   render() {
@@ -22,20 +16,7 @@ class Login extends Component {
     return (
       <View style={styles.container}>
 
-        <Text style={styles.paragraph}>
-          This country depends on us!
-        </Text>
 
-        <View>
-          <TouchableOpacity 
-            style={styles.button}
-            onPress={() => this.login()} >
-
-
-            <Text style={styles.buttonText}>Login</Text>
-
-          </TouchableOpacity>
-        </View>
       </View>
     )
   }
@@ -48,26 +29,6 @@ const styles = StyleSheet.create({
     padding: 40,
   },
 
-  button: {
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    borderRadius: 4,
-  },
-
-  buttonText: {
-    color: '#356c84',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-
-  paragraph: {
-    color: '#ffffff',
-    marginBottom: 25,
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: '100',
-  }
 });
 
 export default Login;
