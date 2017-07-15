@@ -7,20 +7,16 @@ import {
 } from 'react-native';
 
 class HomeScreen extends Component {
-  login() {
-    console.log('Loggin in...');
+  static navigationOptions = {
+    title: 'Cosecha Mobile',
   }
+
   render() {
     console.log('In HomeScreen');
     return (
       <View>
         <View>
-          <Text style={styles.heading}>
-            Welcome to Cosecha!
-          </Text>
-          <TouchableOpacity onPress={this.login.bind(this)} >
-            <Text> Login </Text>
-          </TouchableOpacity>
+          <Text>Welcome to Cosecha!</Text>
         </View>
       </View>
     )

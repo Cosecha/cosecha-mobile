@@ -13,6 +13,8 @@ class Login extends Component {
 
   login() {
     console.log('Loggin in...');
+    const { navigate } = this.props.navigation;
+    navigate('Home');
   }
 
   render() {
