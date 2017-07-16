@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import Button from '../../components/ui/Button';
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -39,14 +40,10 @@ class HomeScreen extends Component {
                   />
                 </View>
 
-                <TouchableOpacity 
-                  style={styles.button}
-                  onPress={() => this.login()} >
-
-
-                  <Text style={styles.buttonText}>Login</Text>
-
-                </TouchableOpacity>
+                <Button 
+                  onPress={() => this.login()}
+                  text={'Login'} 
+                />
 
               </View>
 
@@ -84,18 +81,6 @@ const styles = StyleSheet.create({
     fontWeight: '100',
   },
 
-  button: {
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    borderRadius: 4,
-  },
-
-  buttonText: {
-    color: '#356c84',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
 
   logoContainer: {
     display: 'flex',
