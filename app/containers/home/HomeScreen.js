@@ -4,6 +4,7 @@ import {
   Text, 
   View,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 class HomeScreen extends Component {
@@ -20,42 +21,63 @@ class HomeScreen extends Component {
   render() {
     console.log('In HomeScreen');
     return (
-      <View style={styles.container}>
-        <View>
+      <Image
+        source={require('../../assets/bg.jpg')}
+        style={styles.backgroundImage}
+        >
+        <View style={styles.container}>
 
-          <Text style={styles.paragraph}>
-            This country depends on us!
-          </Text>
+              <View style={styles.overlay}>
 
-          <TouchableOpacity 
-            style={styles.button}
-            onPress={() => this.login()} >
+                <Text style={styles.paragraph}>
+                  This country depends on us!
+                </Text>
+                <View style={styles.logoContainer} >
+                  <Image
+                    source={require('../../assets/cosecha-logo.png')}
+                    style={styles.logo}
+                  />
+                </View>
+
+                <TouchableOpacity 
+                  style={styles.button}
+                  onPress={() => this.login()} >
 
 
-            <Text style={styles.buttonText}>Login</Text>
+                  <Text style={styles.buttonText}>Login</Text>
 
-          </TouchableOpacity>
+                </TouchableOpacity>
+
+              </View>
+
         </View>
-      </View>
+      </Image>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
-    backgroundColor: '#356c84',
-    padding: 40,
+    backgroundColor: 'rgba(53, 108, 132, 0.7)',
+    padding: 30,
+    flexDirection: 'column',
   },
 
-  heading: {
-    backgroundColor: '#cdcdcd',
+  backgroundImage: {
     flex: 1,
-    height: 30,
+    alignSelf: 'stretch',
+    width: null,
+  },
+
+  overlay: {
+    flex: 1,
   },
 
   paragraph: {
     color: '#ffffff',
+    marginTop: 30,
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 30,
@@ -74,6 +96,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   },
+
+  logoContainer: {
+    display: 'flex',
+    marginBottom: 20,
+    flex: 0.3,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  logo: {
+    width: 200,
+    height: 200,
+    flex: 0.2,
+    display: 'flex',
+    alignSelf: 'center',
+  }
 });
 
 export default HomeScreen;
