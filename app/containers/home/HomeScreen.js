@@ -7,6 +7,7 @@ import {
   Image,
 } from 'react-native';
 import Button from '../../components/ui/Button';
+import FullScreenBackground from '../../components/layout/FullScreenBackground';
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -22,9 +23,8 @@ class HomeScreen extends Component {
   render() {
     console.log('In HomeScreen');
     return (
-      <Image
-        source={require('../../assets/bg.jpg')}
-        style={styles.backgroundImage}
+      <FullScreenBackground
+        image={require('../../assets/bg.jpg')}
         >
         <View style={styles.container}>
 
@@ -48,7 +48,7 @@ class HomeScreen extends Component {
               </View>
 
         </View>
-      </Image>
+      </FullScreenBackground>
     )
   }
 }
@@ -60,12 +60,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(53, 108, 132, 0.7)',
     padding: 30,
     flexDirection: 'column',
-  },
-
-  backgroundImage: {
-    flex: 1,
-    alignSelf: 'stretch',
-    width: null,
   },
 
   overlay: {
