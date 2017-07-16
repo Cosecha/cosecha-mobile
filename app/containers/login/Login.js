@@ -10,6 +10,7 @@ import {
   Button,
   TextInput,
 } from '../../components/ui';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
@@ -32,6 +33,13 @@ class Login extends Component {
   startLogin() {
     const { phone } = this.state;
     console.log(`Loggin in phone: ${phone}`);
+    axios.post('http://localhost:5050/api/session', { phone })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
