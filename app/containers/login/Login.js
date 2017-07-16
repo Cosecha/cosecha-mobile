@@ -5,38 +5,70 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import FullScreenBackground from '../../components/layout/FullScreenBackground';
+import {
+  Button,
+  TextInput,
+} from '../../components/ui';
+import axios from 'axios';
 
 class Login extends Component {
-  static navigationOptions = {
-    title: 'Cosecha Mobile',
+  constructor(props) {
+    super(props);
+    this.state = {
+      phone: '',
+    };
   }
 
-  login() {
-    console.log('Loggin in...');
-    const { navigate } = this.props.navigation;
-    navigate('Home');
+  static navigationOptions = {
+    title: 'Login',
+  }
+
+  changePhone(v) {
+    console.log(`Value: ${v}`);
+    console.log(v);
+    this.setState({ phone: v});
+  }
+
+  startLogin() {
+    const { phone } = this.state;
+    console.log(`Loggin in phone: ${phone}`);
+    axios.post('http://localhost:5050/api/session', { phone })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
     console.log('In Login');
+    const { phone } = this.state;
     return (
-      <View style={styles.container}>
+      <FullScreenBackground
+        image={require('../../assets/bg.jpg')}
+      >
+        <View style={styles.container}>
+          <View 
+            style={styles.phoneInput}
+          >
+            <TextInput
+              value={phone}
+              onChange={(event) => this.setState({ phone: event.nativeEvent.text})}
+              keyboardType={'phone-pad'}
+              returnKeyType={'next'}
+              defaultValue='Your phone number'
+            />
+          </View>
 
-        <Text style={styles.paragraph}>
-          This country depends on us!
-        </Text>
+          <Button 
+            text='Login'
+            onPress={() => this.startLogin()}
+          />
 
-        <View>
-          <TouchableOpacity 
-            style={styles.button}
-            onPress={() => this.login()} >
-
-
-            <Text style={styles.buttonText}>Login</Text>
-
-          </TouchableOpacity>
         </View>
-      </View>
+      </FullScreenBackground>
     )
   }
 }
@@ -44,30 +76,15 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#356c84',
+    backgroundColor: 'rgba(53, 108, 132, 0.7)',
     padding: 40,
+    justifyContent: 'center',
   },
 
-  button: {
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    borderRadius: 4,
+  phoneInput: {
+    marginBottom: 20,
   },
 
-  buttonText: {
-    color: '#356c84',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-
-  paragraph: {
-    color: '#ffffff',
-    marginBottom: 25,
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: '100',
-  }
 });
 
 export default Login;
