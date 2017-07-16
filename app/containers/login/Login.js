@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import FullScreenBackground from '../../components/layout/FullScreenBackground';
 
 class Login extends Component {
   constructor(props) {
@@ -21,10 +22,14 @@ class Login extends Component {
   render() {
     console.log('In Login');
     return (
-      <View style={styles.container}>
+      <FullScreenBackground
+        image={require('../../assets/bg.jpg')}
+      >
+        <View style={styles.container}>
 
 
-      </View>
+        </View>
+      </FullScreenBackground>
     )
   }
 }
@@ -32,7 +37,7 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#356c84',
+    backgroundColor: 'rgba(53, 108, 132, 0.7)',
     padding: 40,
   },
 
