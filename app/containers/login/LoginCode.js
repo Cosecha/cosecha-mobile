@@ -9,6 +9,7 @@ import {
   TextInput,
 } from '../../components/ui';
 import FullScreenBackground from '../../components/layout/FullScreenBackground';
+import axios from 'axios';
 
 class LoginCode extends Component {
   constructor(props) {
@@ -24,7 +25,17 @@ class LoginCode extends Component {
 
   submitLoginCode() {
     const { loginCode } = this.state;
+    const { navigate } = this.props.navigation;
     console.log(`Login Code: ${loginCode}`);
+    axios.post('http://localhost:5050/api/session/code', { loginCode })
+      .then((res) => {
+        console.log(res);
+        navigate('Dashboard');
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate('Dashboard');
+      });
   }
 
   render() {
