@@ -32,10 +32,12 @@ class Login extends Component {
 
   startLogin() {
     const { phone } = this.state;
+    const { navigate } = this.props.navigation;
     console.log(`Loggin in phone: ${phone}`);
     axios.post('http://localhost:5050/api/session', { phone })
       .then((res) => {
         console.log(res);
+        navigate('LoginCode');
       })
       .catch((err) => {
         console.log(err);
