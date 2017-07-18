@@ -12,7 +12,7 @@ const App = StackNavigator({
   LoginCode: { screen: LoginCode },
   Dashboard: { screen: Dashboard },
 }, {
-  initialRouteName: 'LoginCode',
+  initialRouteName: 'Home',
 });
 
 AppRegistry.registerComponent('App', () => App);
