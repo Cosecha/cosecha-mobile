@@ -18,6 +18,10 @@ class LoginCode extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: 'Login Code',
+  }
+
   submitLoginCode() {
     const { loginCode } = this.state;
     console.log(`Login Code: ${loginCode}`);
@@ -38,7 +42,7 @@ class LoginCode extends Component {
             <TextInput
               value={loginCode}
               onChange={(event) => this.setState({ loginCode: event.nativeEvent.text})}
-              keyboardType={'keyboard'}
+              keyboardType={'default'}
               returnKeyType={'next'}
               defaultValue='Your Login Code'
             />
